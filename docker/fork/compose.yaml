@@ -1,0 +1,25 @@
+name: manga_server
+services:
+  suwayomi:
+    build:
+      context: .
+      args:
+        FORK_REVISION: ${FORK_REVISION:?Set FORK_REVISION to the full master commit SHA}
+    image: manga-manhwa-reader:${FORK_REVISION:?Set FORK_REVISION}
+    container_name: ${SUWAYOMI_CONTAINER:-suwayomi}
+    environment:
+      TZ: America/Argentina/Buenos_Aires
+    ports:
+      - "${SUWAYOMI_PORT:-4567}:4567"
+    volumes:
+      - type: bind
+        source: ${SUWAYOMI_DATA_DIR:?Set the absolute path to the existing data directory}
+        target: /home/suwayomi/.local/share/Tachidesk
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${SUWAYOMI_DATA_DIR}/downloads
+        target: /home/suwayomi/.local/share/Tachidesk/downloads
+        bind:
+          create_host_path: false
+    restart: unless-stopped
