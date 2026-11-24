@@ -68,10 +68,10 @@ class BackupMutationTest : GraphQLTest() {
 
         response.assertNoErrors()
         val url = response.dataPath("createBackup", "url") as String
-        val filename = url.substringAfterLast('/')
+        val token = url.substringAfterLast('/')
 
         // decode the backup file that the mutation produced
-        val backupPath = TemporaryFileStorage.retrieveFile(filename)
+        val backupPath = TemporaryFileStorage.retrieveFile(token).path
         val backup = decodeBackup(Files.readAllBytes(backupPath))
 
         val titles = backup.backupManga.map { it.title }.toSet()
@@ -99,8 +99,8 @@ class BackupMutationTest : GraphQLTest() {
             )
 
         response.assertNoErrors()
-        val filename = (response.dataPath("createBackup", "url") as String).substringAfterLast('/')
-        val backupPath = TemporaryFileStorage.retrieveFile(filename)
+        val token = (response.dataPath("createBackup", "url") as String).substringAfterLast('/')
+        val backupPath = TemporaryFileStorage.retrieveFile(token).path
         val backup = decodeBackup(Files.readAllBytes(backupPath))
 
         assertNull(
@@ -129,8 +129,8 @@ class BackupMutationTest : GraphQLTest() {
             )
 
         response.assertNoErrors()
-        val filename = (response.dataPath("createBackup", "url") as String).substringAfterLast('/')
-        val backupPath = TemporaryFileStorage.retrieveFile(filename)
+        val token = (response.dataPath("createBackup", "url") as String).substringAfterLast('/')
+        val backupPath = TemporaryFileStorage.retrieveFile(token).path
         val backup = decodeBackup(Files.readAllBytes(backupPath))
 
         assertNotNull(
