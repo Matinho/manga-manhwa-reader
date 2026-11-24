@@ -42,7 +42,7 @@ main() {
     gcc -fPIC -shared scripts/resources/catch_abort.c -lpthread -o scripts/resources/catch_abort.so || error $LINENO "Failed to compile catch_abort" 1
   fi
 
-  JRE_ZULU="25.36.205_25.0.4"
+  JRE_ZULU="25.38.201_25.0.5"
   JRE_RELEASE="jre${JRE_ZULU#*_}" # e.g. jre25.0.1
   ZULU_RELEASE="zulu${JRE_ZULU%_*}" # e.g. zulu25.30.17
 
@@ -143,7 +143,7 @@ move_release_to_output_dir() {
 }
 
 download_launcher() {
-  LAUNCHER_URL=$(curl -sf "https://api.github.com/repos/Suwayomi/Suwayomi-Launcher/releases/latest" | grep "browser_download_url" | grep ".jar" | head -n 1 | cut -d '"' -f 4)
+  LAUNCHER_URL=$(curl -sf "https://api.github.com/repos/Suwayomi/Suwayomi-Launcher/releases/tags/232" | grep "browser_download_url" | grep ".jar" | head -n 1 | cut -d '"' -f 4)
   if [ -z "$LAUNCHER_URL" ]; then
     error $LINENO "Failed to determine launcher URL from GitHub API" 1
   fi

@@ -30,6 +30,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Deprecated
 - (**Downloads/Updates/API**) Remove `maxUpdates` `download` and `update` subscription input as it is not needed anymore due to subscriptions now supporting data loader batching
 
+## [v2.4.2373] - 2026-11-21
+
+### Fixed
+- Fix using the wrong version of the Launcher
+
+## [v2.4.2372] - 2026-11-21
+
+### Fixed
+- (**Security**) Form submissions now require a CSRF cookie to prevent forgery
+- (**Security**) Update JRE to resolve Java4Shell
+- (**Security**) Use random URLs for temporary files to prevent guessable file URLs
+
 ## [v2.4.2366] + [WebUI: v20260929.01] - 2026-09-29
 
 #### Bug Squashing and Optimizations!
@@ -574,7 +586,9 @@ Huge thanks to @martinek who pulled the most of the weight this release!
 
 <!-- SERVER LINKS -->
 
-[unreleased]: https://github.com/suwayomi/suwayomi-server/compare/v2.4.2366...HEAD
+[unreleased]: https://github.com/suwayomi/suwayomi-server/compare/v2.4.2373...HEAD
+[v2.4.2373]: https://github.com/suwayomi/suwayomi-server/compare/v2.3.2372...v2.4.2373
+[v2.4.2372]: https://github.com/suwayomi/suwayomi-server/compare/v2.3.2366...v2.4.2372
 [v2.4.2366]: https://github.com/suwayomi/suwayomi-server/compare/v2.3.2243...v2.4.2366
 [v2.3.2243]: https://github.com/suwayomi/suwayomi-server/compare/v2.3.2238...v2.3.2243
 [v2.3.2238]: https://github.com/suwayomi/suwayomi-server/compare/v2.3.2232...v2.3.2238
